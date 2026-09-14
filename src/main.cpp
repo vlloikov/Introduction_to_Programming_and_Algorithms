@@ -2,136 +2,133 @@
 #include <iostream>
 #include <limits>
 
-// Вспомогательная функция очистки потока после ошибочного ввода.
+// Helper function to clear the stream after invalid input.
 void ClearInput() {
   std::cin.clear();
   std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
-// Радиус -> 2 * PI * R
+// Function to find the radius using the formula -> 2 * PI * R
 void CalculationCircumference() {
 
   double radius;
 
-  // Значение PI является константой и не изменяется.
-  const double PI = 3.14159265358979323846;
+  // The value of PI is a constant and does not change.
+  const double PI{3.14159265358979323846};
 
   std::cout << "==================================================\n"
-            << "             БАЗОВЫЙ УРОВЕНЬ\n"
-            << "             Длина окружности\n"
+            << "             Circumference\n"
             << "==================================================\n";
 
-  std::cout << "Введите радиус: ";
+  std::cout << "Enter the radius: ";
   std::cin >> radius;
 
-  // Проверяем:
-  // 1) не ввёл ли пользователь буквы вместо числа;
-  // 2) не является ли радиус отрицательным.
+  // Check:
+  // 1) whether the user entered letters instead of a number;
+  // 2) whether the radius is negative.
   if (std::cin.fail() || radius < 0) {
-    std::cerr << "Ошибка: радиус должен быть "
-                 "неотрицательным числом.\n";
+    std::cerr << "Error: the radius must be "
+                 "a non-negative number.\n";
     ClearInput();
     return;
   }
 
-  // Формула длины окружности: L = 2 * PI * R.
+  // Circumference formula: L = 2 * PI * R.
   double circumference = 2.0 * PI * radius;
 
-  // Форматируем вещественный результат:
+  // Format the floating-point result:
   std::cout << std::fixed << std::setprecision(2);
 
-  std::cout << "\nРезультат:\n"
-            << "Радиус: " << radius << "\n"
-            << "Длина окружности: " << circumference << "\n\n";
+  std::cout << "\nResult:\n"
+            << "Radius: " << radius << "\n"
+            << "Circumference: " << circumference << "\n\n";
 }
 
-// Секунды -> часы, минуты, секунды
+// Function to convert seconds -> hours, minutes, seconds
 void SecondsToHours() {
   int totalSeconds;
 
   std::cout << "==================================================\n"
-            << "             СРЕДНИЙ УРОВЕНЬ\n"
-            << "             Перевод секунд\n"
+            << "             Seconds Conversion\n"
             << "==================================================\n";
 
-  std::cout << "Введите количество секунд: ";
+  std::cout << "Enter the number of seconds: ";
   std::cin >> totalSeconds;
 
-  // Проверяем некорректный ввод и отрицательные значения.
+  // Check for invalid input and negative values.
   if (std::cin.fail() || totalSeconds < 0) {
-    std::cerr << "Ошибка: количество секунд должно быть "
-                 "неотрицательным целым числом.\n";
+    std::cerr << "Error: the number of seconds must be "
+                 "a non-negative integer.\n";
 
     ClearInput();
     return;
   }
 
-  // В одном часе 3600 секунд.
+  // There are 3600 seconds in one hour.
   const int SECONDS_IN_HOUR = 3600;
 
-  // В одной минуте 60 секунд.
+  // There are 60 seconds in one minute.
   const int SECONDS_IN_MINUTE = 60;
 
-  // Находим количество полных часов.
+  // Find the number of full hours.
   int hours = totalSeconds / SECONDS_IN_HOUR;
 
-  // Остаток после выделения часов переводим в минуты.
+  // Convert the remainder after extracting hours into minutes.
   int minutes = (totalSeconds % SECONDS_IN_HOUR) / SECONDS_IN_MINUTE;
 
-  // Оставшийся остаток является количеством секунд.
+  // The remaining remainder is the number of seconds.
   int seconds = totalSeconds % SECONDS_IN_MINUTE;
 
-  // Выводим результат в структурированном виде.
-  std::cout << "\nРезультат:\n"
-            << "Всего секунд: " << totalSeconds << "\n"
-            << "Часы:         " << hours << "\n"
-            << "Минуты:       " << minutes << "\n"
-            << "Секунды:      " << seconds << "\n\n";
+  // Output the result in a structured form.
+  std::cout << "\nResult:\n"
+            << "Total seconds: " << totalSeconds << "\n"
+            << "Hours:         " << hours << "\n"
+            << "Minutes:       " << minutes << "\n"
+            << "Seconds:       " << seconds << "\n\n";
 }
 
-// Рубли -> доллары -> евро
+// Function to convert currency Rubles -> dollars -> euros
 void CurrencyConversion() {
   double rubles;
   double rubleToDollar;
   double rubleToEuro;
 
   std::cout << "==================================================\n"
-            << "           ПОВЫШЕННЫЙ УРОВЕНЬ\n"
-            << "             Конвертер валют\n"
+            << "             Currency Converter\n"
             << "==================================================\n";
 
-  std::cout << "Введите сумму в рублях: ";
+  std::cout << "Enter the amount in rubles: ";
   std::cin >> rubles;
 
-  // Проверка корректности ввода.
+  // Check input validity.
   if (std::cin.fail() || rubles < 0) {
-    std::cerr << "Ошибка: сумма в рублях должна быть "
-                 "неотрицательным числом.\n";
+    std::cerr << "Error: the amount in rubles must be "
+                 "a non-negative number.\n";
 
     ClearInput();
     return;
   }
 
-  std::cout << "Введите курс рубля к доллару "
-               "(рублей за 1 доллар): ";
+  std::cout << "Enter the ruble-to-dollar exchange rate "
+               "(rubles per 1 dollar): ";
   std::cin >> rubleToDollar;
 
   if (std::cin.fail() || rubleToDollar <= 0) {
-    std::cerr << "Ошибка: курс рубля к доллару "
-                 "должен быть больше нуля.\n";
+    std::cerr << "Error: the ruble-to-dollar exchange rate "
+                 "must be greater than zero.\n";
 
     ClearInput();
     return;
   }
 
-  std::cout << "Введите курс доллара к евро "
-               "(евро за 1 доллар): ";
+  std::cout << "Enter the dollar-to-euro exchange rate "
+               "(euros per 1 dollar): ";
   std::cin >> rubleToEuro;
 
-  // Проверяем, что курс является положительным.
+  // Check that the exchange rate is positive.
   if (std::cin.fail() || rubleToEuro <= 0) {
-    std::cerr << "Ошибка: курс доллара к евро "
-                 "должен быть больше нуля.\n";
+    std::cerr << "Error: the dollar-to-euro exchange rate "
+                 "must be greater than zero.\n";
 
     ClearInput();
     return;
@@ -144,21 +141,21 @@ void CurrencyConversion() {
   std::cout << std::fixed << std::setprecision(2);
 
   std::cout << "\n+----------------------+--------------+\n";
-  std::cout << "| Показатель           | Значение     |\n";
+  std::cout << "| Indicator            | Value        |\n";
   std::cout << "+----------------------+--------------+\n";
 
-  std::cout << "| Рубли                | " << std::setw(12) << rubles << " |\n";
+  std::cout << "| Rubles               | " << std::setw(12) << rubles << " |\n";
 
-  std::cout << "| Курс RUB -> USD      | " << std::setw(12) << rubleToDollar
+  std::cout << "| RUB -> USD rate      | " << std::setw(12) << rubleToDollar
             << " |\n";
 
-  std::cout << "| Доллары              | " << std::setw(12) << dollars
+  std::cout << "| Dollars              | " << std::setw(12) << dollars
             << " |\n";
 
-  std::cout << "| Курс USD -> EUR      | " << std::setw(12) << rubleToEuro
+  std::cout << "| USD -> EUR rate      | " << std::setw(12) << rubleToEuro
             << " |\n";
 
-  std::cout << "| Евро                 | " << std::setw(12) << euros << " |\n";
+  std::cout << "| Euros                | " << std::setw(12) << euros << " |\n";
 
   std::cout << "+----------------------+--------------+\n\n";
 }
