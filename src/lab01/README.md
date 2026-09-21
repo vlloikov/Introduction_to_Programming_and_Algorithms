@@ -1,46 +1,52 @@
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-green.svg)](../../LICENSE)
-# Console Utilities
+# Lab 1 — First program
 
-A small C++ console application that bundles three simple utilities:
+Console C++ program demonstrating variable types, arithmetic operations, and explicit/implicit type casting.
 
-1. **Circumference Calculator** — computes the circumference of a circle from its radius.
-2. **Seconds Converter** — converts a number of seconds into hours, minutes, and seconds.
-3. **Currency Converter** — converts rubles to dollars and euros using user-provided exchange rates.
-
----
-
-## Features
-
-- Interactive console flow (functions run sequentially).
-- Input validation for non-numeric input, negative numbers, and zero or negative exchange rates.
-- Automatic stream cleanup after invalid input.
-- Formatted floating-point output with fixed precision (`std::fixed`, `std::setprecision`).
-
----
-
-## Requirements
-
-- A C++ compiler with support for C++11 or later (e.g., `g++`, `clang++`, MSVC).
-
----
-
-## Build
-
-Using `g++`:
-
-```bash
-g++ -std=c++11 -Wall -Wextra -o console_utils main.cpp
+## Structure
+```aiignore
+lab01/
+├── README.md
+└── lab01.cpp
 ```
+
+| Function | Purpose |
+|---|---|
+| `ClearInput()` | Resets `std::cin` state and discards the buffer after a failed read |
+| `CalculateCircumference()` | Computes the circumference of a circle from its radius: `2 * PI * R` |
+| `ConvertkilometersphToMetersps()` | Converts speed from km/h to m/s |
+| `CalculateBMI()` | Computes BMI and prints the weight category |
+
+## Usage
+
+The program runs three calculators sequentially, reading values from `stdin`:
+
+1. **Circumference** — enter radius (non-negative number).
+2. **Speed conversion** — enter speed in km/h (non-negative number).
+3. **BMI** — enter weight in kg and height in cm (both positive).
+
+Invalid input (non-numeric, negative, or zero where not allowed) produces an error message on `stderr` and skips the corresponding calculation.
+
+### Example
+```C++
+int main()
+{
+    CalculateCircumference();
+}
+```
+Or any other function what you want to use
+
 ---
-## Run
-On linux:
-```bash
-./console_utils
-```
-On Windows
-```bash
-console_utils.exe
-```
+
+## Implementation notes
+
+- All floating-point values use `double` to avoid precision loss.
+- `PI` is declared `const` and never changes.
+- `SECONDS_IN_HOUR` and `SECONDS_IN_MINUTE` are declared `const int` to avoid magic numbers.
+- `SecondsToHours()` demonstrates integer division (`/`) and the modulo operator (`%`) for extracting hours, minutes, and seconds.
+- `CurrencyConversion()` uses `static_cast<double>` to ensure floating-point division.
+- Input validation uses `std::cin.fail()` combined with `ClearInput()`.
+- Output is formatted with `std::fixed`, `std::setprecision(2)`, and `std::setw(12)` for table alignment.
+
 ---
 
 ## License

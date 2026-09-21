@@ -3,4 +3,5 @@ project(Introduction_to_Programming_and_Algorithms)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Introduction_to_Programming_and_Algorithms src/lab01/main.cpp)
+add_executable(Introduction_to_Programming_and_Algorithms src/lab01/lab01.cpp
+        src/lab02/lab02.cpp)
