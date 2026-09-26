@@ -12,7 +12,7 @@ A collection of laboratory works for a C++ course. Each lab is a standalone cons
 |---|---|---|---|
 | 1 | First program | ✅ done | [lab1](./src/lab01/README.md) |
 | 2 | Variables and Arithmetic Operations | ✅ done | [lab2](./src/lab02/README.md) |
-
+| 3 | Branching. Logical operators | ✅ done | [lab3](./src/lab03/README.md) |
 > Status legend: ✅ done · 🚧 in progress · _planned_ 
 
 ## Structure
@@ -21,8 +21,8 @@ A collection of laboratory works for a C++ course. Each lab is a standalone cons
 │ ├── lab01/
 │ │ ├── lab01.cpp
 │ │ └── README.md
-│ └── lab02/
-│ ├── lab02.cpp
+│ └── labxx/
+│ ├── labxx.cpp
 │ └── README.md
 ├── .clang-format
 ├── .gitignore
