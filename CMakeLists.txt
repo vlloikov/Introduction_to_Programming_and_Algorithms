@@ -5,4 +5,5 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(Introduction_to_Programming_and_Algorithms src/lab01/lab01.cpp
         src/lab02/lab02.cpp
-        src/lab03/lab03.cpp)
+        src/lab03/lab03.cpp
+        src/lab04/lab04.cpp)
